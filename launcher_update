@@ -9,6 +9,6 @@
     "url": "https://lerepair.freeboxos.fr:56075/share/ezWz6JH2yRxfShCx/game/mods.zip"
   },
   "neoforge": {
-    "url": "https://maven.minecraftforge.net/net/minecraftforge/neoforge/1.21.1.206/NeoForge-1.21.1.206-installer.jar"
+    "url": "https://maven.neoforged.net/releases/net/neoforged/neoforge/21.1.206/neoforge-21.1.206-installer.jar"
   }
 }
