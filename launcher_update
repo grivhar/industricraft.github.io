@@ -1,30 +1,14 @@
-import requests
-from bs4 import BeautifulSoup
-import json
-
-url = "https://industricraft.gamer.gd/launcher_updater/"
-
-headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
+{
+  "version": "1.0.0",
+  "changelog": [
+    "Version initiale du launcher",
+    "Installation automatique de NeoForge",
+    "Ajout du système de mise à jour"
+  ],
+  "mods": {
+    "url": "https://lerepair.freeboxos.fr:56075/share/ezWz6JH2yRxfShCx/game/mods.zip"
+  },
+  "neoforge": {
+    "url": "https://maven.minecraftforge.net/net/minecraftforge/neoforge/1.21.1.206/NeoForge-1.21.1.206-installer.jar"
+  }
 }
-
-try:
-    response = requests.get(url, headers=headers)
-    response.raise_for_status()
-
-    soup = BeautifulSoup(response.text, "html.parser")
-    p = soup.find("p")
-    if not p:
-        raise ValueError("Impossible de trouver le JSON dans la page")
-
-    json_text = p.get_text(separator="\n").strip()
-    config = json.loads(json_text)
-
-    print("Version du launcher :", config["version"])
-    print("URL des mods :", config["mods"]["url"])
-    print("URL NeoForge :", config["neoforge"]["url"])
-
-except requests.exceptions.RequestException as e:
-    print("Erreur lors de la récupération de la page :", e)
-except (json.JSONDecodeError, ValueError) as e:
-    print("Erreur lors du parsing JSON :", e)
